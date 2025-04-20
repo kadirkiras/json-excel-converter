@@ -1,0 +1,43 @@
+{
+  "name": "json-to-excel",
+  "version": "1.0.0",
+  "description": "A Node.js application to convert JSON data to Excel format",
+  "main": "index.js",
+  "bin": {
+    "json-to-excel": "./cli.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "convert": "node cli.js",
+    "test": "node cli.js sample-data.json"
+  },
+  "keywords": [
+    "json",
+    "excel",
+    "converter",
+    "xlsx",
+    "json-to-excel",
+    "export",
+    "spreadsheet"
+  ],
+  "author": "Kadir Kiraş",
+  "license": "MIT",
+  "homepage": "https://github.com/kadirkiras/json-to-excel#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadirkiras/json-to-excel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kadirkiras/json-to-excel/issues"
+  },
+  "dependencies": {
+    "exceljs": "^4.3.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
+  }
+}
