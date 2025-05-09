@@ -1,5 +1,5 @@
 {
-  "name": "json-excel-converter",
+  "name": "@kadirkiras/json-excel-converter",
   "version": "1.0.0",
   "description": "A Node.js application to convert between JSON and Excel formats",
   "main": "index.js",
@@ -9,8 +9,15 @@
   "scripts": {
     "start": "node index.js",
     "convert": "node cli.js",
-    "test": "node cli.js sample-data.json"
+    "test": "node cli.js sample-data.json",
+    "prepublishOnly": "npm test"
   },
+  "files": [
+    "index.js",
+    "cli.js",
+    "LICENSE",
+    "README.md"
+  ],
   "keywords": [
     "json",
     "excel",
@@ -34,6 +41,7 @@
     "url": "https://github.com/kadirkiras/json-excel-converter/issues"
   },
   "dependencies": {
+    "@kadirkiras/json-excel-converter": "^1.0.0",
     "exceljs": "^4.3.0"
   },
   "engines": {
@@ -42,5 +50,8 @@
   "devDependencies": {
     "@types/node": "^22.14.1",
     "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
