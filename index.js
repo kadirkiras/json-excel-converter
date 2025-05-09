@@ -1,6 +1,6 @@
 /**
  * @file index.js
- * @description Main module for converting JSON data to Excel format
+ * @description Main module for converting between JSON and Excel formats
  * @author Kadir Kiraş
  * @license MIT
  */
@@ -70,6 +70,51 @@ async function convertJsonToExcel(jsonData, outputPath) {
   }
 }
 
+/**
+ * Converts Excel file to JSON format
+ * @param {string} excelPath - Path to the Excel file
+ * @returns {Promise<Array>} A promise that resolves with the JSON data
+ * @throws {Error} If the conversion process fails
+ */
+async function convertExcelToJson(excelPath) {
+  try {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(excelPath);
+    
+    const worksheet = workbook.getWorksheet(1); // Get the first worksheet
+    if (!worksheet) {
+      throw new Error("No worksheet found in the Excel file");
+    }
+
+    const headers = [];
+    const jsonData = [];
+
+    // Get headers from the first row
+    worksheet.getRow(1).eachCell((cell) => {
+      headers.push(cell.value);
+    });
+
+    // Process each row starting from the second row
+    worksheet.eachRow((row, rowNumber) => {
+      if (rowNumber === 1) return; // Skip header row
+
+      const rowData = {};
+      row.eachCell((cell, colNumber) => {
+        const header = headers[colNumber - 1];
+        if (header) {
+          rowData[header] = cell.value;
+        }
+      });
+      jsonData.push(rowData);
+    });
+
+    return jsonData;
+  } catch (error) {
+    console.error("Error converting Excel to JSON:", error);
+    throw error;
+  }
+}
+
 // Example usage when this file is run directly
 if (require.main === module) {
   // Sample JSON data
@@ -97,11 +142,24 @@ if (require.main === module) {
     },
   ];
 
-  // Output file path
-  const outputFile = path.join(__dirname, "output.xlsx");
+  // Output file paths
+  const excelOutputFile = path.join(__dirname, "output.xlsx");
+  const jsonOutputFile = path.join(__dirname, "output.json");
 
-  // Convert and save
-  convertJsonToExcel(sampleData, outputFile);
+  // Convert JSON to Excel
+  convertJsonToExcel(sampleData, excelOutputFile)
+    .then(() => {
+      // Convert Excel back to JSON
+      return convertExcelToJson(excelOutputFile);
+    })
+    .then((jsonData) => {
+      // Save JSON data to file
+      fs.writeFileSync(jsonOutputFile, JSON.stringify(jsonData, null, 2));
+      console.log(`JSON file created successfully at: ${jsonOutputFile}`);
+    })
+    .catch((error) => {
+      console.error("Error in conversion process:", error);
+    });
 }
 
-module.exports = { convertJsonToExcel };
+module.exports = { convertJsonToExcel, convertExcelToJson };
