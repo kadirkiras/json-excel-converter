@@ -1,8 +1,8 @@
 # JSON and Excel Converter
 
-[![npm version](https://badge.fury.io/js/%40kadirkiras%2Fjson-excel-converter.svg)](https://badge.fury.io/js/%40kadirkiras%2Fjson-excel-converter)
+[![npm version](https://img.shields.io/npm/v/@kadirkiras/json-excel-converter.svg)](https://www.npmjs.com/package/@kadirkiras/json-excel-converter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Contributing](https://img.shields.io/badge/Contributing-Welcome-blue.svg)](https://github.com/kadirkiras/json-excel-converter/issues)
 
 A powerful Node.js application that provides bidirectional conversion between JSON and Excel formats. This tool is perfect for data analysts, developers, and anyone who needs to work with both JSON and Excel files.
 

@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { convertJsonToExcel, convertExcelToJson } = require('./index');
+const packageJson = require('./package.json');
 
 /**
  * Display help message for the CLI
@@ -19,7 +20,7 @@ function showHelp() {
 JSON and Excel Converter
 
 Usage:
-  json-to-excel <input> [output] [--to-excel|--to-json]
+  json-excel-converter <input> [output] [--to-excel|--to-json]
 
 Arguments:
   input         Path to the input file (JSON or Excel)
@@ -29,10 +30,10 @@ Arguments:
   --to-json     Convert Excel to JSON (default if input is Excel)
 
 Examples:
-  json-to-excel data.json
-  json-to-excel data.json output.xlsx
-  json-to-excel data.xlsx output.json --to-json
-  json-to-excel data.json output.xlsx --to-excel
+  json-excel-converter data.json
+  json-excel-converter data.json output.xlsx
+  json-excel-converter data.xlsx output.json --to-json
+  json-excel-converter data.json output.xlsx --to-excel
   `);
 }
 
@@ -41,6 +42,12 @@ Examples:
  */
 async function main() {
   const args = process.argv.slice(2);
+  
+  // Show version if --version flag
+  if (args.includes('-v') || args.includes('--version')) {
+    console.log(packageJson.version);
+    process.exit(0);
+  }
   
   // Show help if no arguments or help flag
   if (args.length === 0 || args.includes('-h') || args.includes('--help')) {
