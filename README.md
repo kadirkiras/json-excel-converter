@@ -1,40 +1,63 @@
 # JSON and Excel Converter
 
-A simple Node.js application to convert between JSON and Excel formats. This is an open-source project that provides bidirectional conversion capabilities.
+[![npm version](https://badge.fury.io/js/%40kadirkiras%2Fjson-excel-converter.svg)](https://badge.fury.io/js/%40kadirkiras%2Fjson-excel-converter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-## Features
+A powerful Node.js application that provides bidirectional conversion between JSON and Excel formats. This tool is perfect for data analysts, developers, and anyone who needs to work with both JSON and Excel files.
 
-- Convert JSON arrays or objects to Excel files
-- Convert Excel files to JSON format
-- Automatic column width adjustment
-- Bold formatting for header row
-- Simple command-line interface
-- Can be used as a module in other projects
-- Supports both .xlsx and .xls formats
-- Automatic format detection based on file extension
+## ✨ Features
 
-## Installation
+- 🔄 Bidirectional conversion (JSON ↔ Excel)
+- 📊 Automatic column width adjustment
+- 🎨 Bold formatting for header rows
+- 📝 Support for both .xlsx and .xls formats
+- 🔍 Automatic format detection
+- 🛠️ Simple command-line interface
+- 📦 Can be used as a module in other projects
+- 🚀 High performance with large datasets
+- 💪 Error handling and validation
+
+## 📦 Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/kadirkiras/json-to-excel.git
+# Install globally
+npm install -g @kadirkiras/json-excel-converter
 
-# Navigate to the directory
-cd json-to-excel
-
-# Install dependencies
-npm install
-
-# Optional: Install globally
-npm install -g .
+# Install as a project dependency
+npm install @kadirkiras/json-excel-converter
 ```
 
-## Usage
+## 🚀 Usage
+
+### Command Line Interface
+
+```bash
+# Convert JSON to Excel
+json-excel-converter data.json [output.xlsx]
+json-excel-converter data.json output.xlsx --to-excel
+
+# Convert Excel to JSON
+json-excel-converter data.xlsx [output.json]
+json-excel-converter data.xlsx output.json --to-json
+```
+
+#### Command Line Options
+
+| Option       | Description                      |
+| ------------ | -------------------------------- |
+| `--to-excel` | Force conversion to Excel format |
+| `--to-json`  | Force conversion to JSON format  |
+| `--help`     | Show help message                |
+| `--version`  | Show version number              |
 
 ### As a Module
 
 ```javascript
-const { convertJsonToExcel, convertExcelToJson } = require("json-to-excel");
+const {
+  convertJsonToExcel,
+  convertExcelToJson,
+} = require("@kadirkiras/json-excel-converter");
 
 // Convert JSON to Excel
 const jsonData = [
@@ -47,42 +70,33 @@ await convertJsonToExcel(jsonData, "output.xlsx");
 const jsonData = await convertExcelToJson("input.xlsx");
 ```
 
-### As a Command Line Tool
+## 📝 Examples
 
-```bash
-# Convert JSON to Excel
-json-to-excel data.json [output.xlsx]
-json-to-excel data.json output.xlsx --to-excel
+### JSON to Excel
 
-# Convert Excel to JSON
-json-to-excel data.xlsx [output.json]
-json-to-excel data.xlsx output.json --to-json
+```javascript
+const data = [
+  { name: "John", age: 30, city: "New York" },
+  { name: "Jane", age: 25, city: "London" },
+];
+await convertJsonToExcel(data, "output.xlsx");
 ```
 
-#### Parameters:
+### Excel to JSON
 
-- `input`: Path to the input file (JSON or Excel)
-- `output`: (Optional) Path to save the output file. If not provided, the output file will be saved with the same name as the input file but with appropriate extension
-- `--to-excel`: Force conversion to Excel format
-- `--to-json`: Force conversion to JSON format
-
-If neither `--to-excel` nor `--to-json` is specified, the conversion direction is automatically determined based on the input file extension.
-
-## Example
-
-To convert sample files:
-
-```bash
-# Convert JSON to Excel
-npm run convert sample-data.json
-
-# Convert Excel to JSON
-npm run convert sample-data.xlsx
+```javascript
+const jsonData = await convertExcelToJson("input.xlsx");
+console.log(jsonData);
+// Output:
+// [
+//   { name: "John", age: 30, city: "New York" },
+//   { name: "Jane", age: 25, city: "London" }
+// ]
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. This is an open-source project, and we appreciate any help in making it better.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -90,29 +104,54 @@ Contributions are welcome! Please feel free to submit a Pull Request. This is an
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### Development
+Please make sure to update tests as appropriate.
 
-To set up the development environment:
+## 🧪 Development
 
 ```bash
+# Clone the repository
+git clone https://github.com/kadirkiras/json-excel-converter.git
+
 # Install dependencies
 npm install
 
 # Run tests
 npm test
 
-# Run linting
-npm run lint
 ```
 
-## License
+## 📚 Documentation
+
+For more detailed documentation, please visit our [GitHub Wiki](https://github.com/kadirkiras/json-excel-converter/wiki).
+
+## 🐛 Known Issues
+
+- Large Excel files (>100MB) might take longer to process
+- Complex Excel formulas are not supported in conversion
+
+## 🔜 Roadmap
+
+- [ ] Support for Excel formulas
+- [ ] Custom styling options
+- [ ] Multiple sheet support
+- [ ] Progress bar for large files
+- [ ] Web interface
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - [ExcelJS](https://github.com/exceljs/exceljs) - The Excel manipulation library used in this project
+- All contributors who have helped shape this project
 
-## Support
+## 📞 Support
 
-If you find this project helpful, please consider giving it a star on GitHub. For issues and feature requests, please use the GitHub issue tracker.
+If you find this project helpful, please consider giving it a star on GitHub. For issues and feature requests, please use the [GitHub issue tracker](https://github.com/kadirkiras/json-excel-converter/issues).
+
+## 🤝 Connect
+
+- GitHub: [@kadirkiras](https://github.com/kadirkiras)
+- Twitter: [@kadirkiras](https://twitter.com/kadirkiras)
+- LinkedIn: [Kadir Kiraş](https://linkedin.com/in/kadirkiras)
