@@ -153,5 +153,5 @@ If you find this project helpful, please consider giving it a star on GitHub. Fo
 ## 🤝 Connect
 
 - GitHub: [@kadirkiras](https://github.com/kadirkiras)
-- Twitter: [@kadirkiras](https://twitter.com/kadirkiras)
+- X: [@codekadir](https://x.com/codekadir)
 - LinkedIn: [Kadir Kiraş](https://linkedin.com/in/kadirkiras)

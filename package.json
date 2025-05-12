@@ -1,6 +1,6 @@
 {
   "name": "@kadirkiras/json-excel-converter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Node.js application to convert between JSON and Excel formats",
   "main": "index.js",
   "bin": {
